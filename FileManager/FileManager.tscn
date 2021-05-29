@@ -1,0 +1,254 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://FileManager/Icons/Home.png" type="Texture" id=1]
+[ext_resource path="res://FileManager/Icons/Path.png" type="Texture" id=2]
+[ext_resource path="res://FileManager/fonts/DroidSerif-Italic.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://FileManager/Icons/return.png" type="Texture" id=4]
+[ext_resource path="res://FileManager/fonts/DroidSans.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://FileManager/ScrollContainer.gd" type="Script" id=6]
+[ext_resource path="res://FileManager/UI/Folder Button.tscn" type="PackedScene" id=7]
+[ext_resource path="res://FileManager/Icons/New Folder.png" type="Texture" id=8]
+[ext_resource path="res://FileManager/FileManager.gd" type="Script" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 27
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 58
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 26
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 27
+font_data = ExtResource( 5 )
+
+[node name="FileManager" type="Popup"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.121569, 0.121569, 0.121569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="ColorRect" parent="ColorRect/VBoxContainer"]
+margin_right = 600.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 0, 67 )
+size_flags_horizontal = 3
+color = Color( 0.192157, 0.388235, 0.662745, 1 )
+
+[node name="Up Directory" type="Button" parent="ColorRect/VBoxContainer/Title"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -179.393
+margin_top = -33.5
+margin_right = -100.393
+margin_bottom = 34.5
+icon = ExtResource( 4 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="New Folder" type="Button" parent="ColorRect/VBoxContainer/Title"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -82.254
+margin_top = -33.5
+margin_right = -3.25403
+margin_bottom = 34.5
+icon = ExtResource( 8 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Path Container" type="TextureRect" parent="ColorRect/VBoxContainer"]
+margin_top = 71.0
+margin_right = 600.0
+margin_bottom = 131.0
+rect_min_size = Vector2( 0, 60 )
+size_flags_horizontal = 3
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Path" type="Label" parent="ColorRect/VBoxContainer/Path Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 90.0
+margin_right = -11.0
+margin_bottom = -3.8147e-06
+custom_fonts/font = SubResource( 1 )
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Home" type="Button" parent="ColorRect/VBoxContainer/Path Container"]
+margin_right = 74.0
+margin_bottom = 60.0
+icon = ExtResource( 1 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 135.0
+margin_right = 600.0
+margin_bottom = 940.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 6 )
+
+[node name="Button Container" type="VBoxContainer" parent="ColorRect/VBoxContainer/ScrollContainer"]
+margin_right = 600.0
+margin_bottom = 805.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Folder Button" parent="ColorRect/VBoxContainer/ScrollContainer/Button Container" instance=ExtResource( 7 )]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 944.0
+margin_right = 600.0
+margin_bottom = 1024.0
+
+[node name="Close manager" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer"]
+margin_right = 298.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "Cancel"
+
+[node name="Select folder" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer"]
+margin_left = 302.0
+margin_right = 600.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "Select current folder"
+
+[node name="New Folder" type="Popup" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -263.0
+margin_top = -170.0
+margin_right = 263.0
+margin_bottom = 169.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="New Folder"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="New Folder/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -149.0
+margin_top = -143.819
+margin_right = 143.0
+margin_bottom = -36.8191
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0509804, 0.278431, 0.568627, 1 )
+text = "Name:"
+align = 1
+valign = 1
+
+[node name="ColorRect" type="ColorRect" parent="New Folder/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -241.0
+margin_top = -35.5
+margin_right = 240.0
+margin_bottom = 36.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name of New" type="TextEdit" parent="New Folder/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -235.5
+margin_top = -31.0
+margin_right = 235.5
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="New Folder/Panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -96.0
+margin_right = 263.0
+custom_fonts/font = SubResource( 5 )
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Create" type="Button" parent="New Folder/Panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 265.0
+margin_top = -96.0
+margin_right = 526.0
+custom_fonts/font = SubResource( 5 )
+text = "Create Folder"
+
+[connection signal="about_to_show" from="." to="." method="_on_File_Manager_about_to_show"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Title/Up Directory" to="." method="_on_Up_Directory_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Title/New Folder" to="." method="_on_New_Folder_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Path Container/Home" to="." method="_on_Home_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/Close manager" to="." method="_on_Close_manager_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/Select folder" to="." method="_on_Select_folder_pressed"]
+[connection signal="about_to_show" from="New Folder" to="." method="_on_New_Folder_about_to_show"]
+[connection signal="gui_input" from="New Folder/Panel/name of New" to="." method="_on_name_of_New_gui_input"]
+[connection signal="pressed" from="New Folder/Panel/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="New Folder/Panel/Create" to="." method="_on_Create_pressed"]

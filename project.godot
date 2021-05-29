@@ -1,0 +1,44 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+}
+
+[application]
+
+config/name="File Manager"
+config/description="Made by: \"Variable\"
+\"A FileManager for Android\""
+run/main_scene="res://FileManager/FileManager.tscn"
+config/icon="res://FileManager/Preview.png"
+config/quit_on_go_back=false
+
+[audio]
+
+default_bus_layout=""
+
+[display]
+
+window/size/width=600
+window/size/height=1024
+window/handheld/orientation="portrait"
+window/stretch/mode="viewport"
+
+[editor]
+
+fullsize=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+quality/dynamic_fonts/use_oversampling=false
